@@ -6,13 +6,14 @@ import LoginPage from './assets/pages/LoginPage'
 import CustomerDashboard from './assets/pages/CustomerDashBoard'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import HomePage from './assets/pages/HomePage'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-    <CustomerDashboard/>
+    <HomePage />
     </>
   )
 }

@@ -26,7 +26,7 @@ function CarOwnerNavbar() {
                     </svg>
         
                     <header>
-                        <div className="px-3 py-2 text-bg-dark border-bottom">
+                         <div className="px-3 py-2 bg-my-background border-bottom">
                             <div className="container">
                                 <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                                     <a href="/" className="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
@@ -70,7 +70,7 @@ function CarOwnerNavbar() {
                                         <li>
                                             <a href="#" className="nav-link text-my-color">
                                                 <svg className="bi d-block mx-auto mb-1" width="24" height="24"><use xlinkHref="#people-circle"></use></svg>
-                                                Customers
+                                                Profile
                                             </a>
                                         </li>
                                     </ul>
