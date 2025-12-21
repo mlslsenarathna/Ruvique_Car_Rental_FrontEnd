@@ -1,0 +1,18 @@
+.container_Box_1 {
+    margin: 20px;
+    padding: 25px;
+    text-align: center;
+    width: 400px;
+    height: 1000px;
+    background-color: #161616; 
+    border: 1px solid rgba(197, 157, 95, 0.4); 
+    border-radius: 8px; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
