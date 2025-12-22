@@ -5,6 +5,7 @@ import './App.css'
 import LoginPage from './assets/pages/LoginPage'
 import SignUpPage from './assets/pages/SignUpPage'
 import CustomerDashboard from './assets/pages/CustomerDashBoard'
+import CarOwnerDashBoard from './assets/pages/CarOwnerDashBoard'  
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import HomePage from './assets/pages/HomePage'
@@ -22,6 +23,8 @@ function App() {
   <Route path='' element={ <HomePage/>}></Route>
   <Route path='/signup' element={<SignUpPage/>}></Route>
   <Route path='/login' element={<LoginPage/>}></Route>
+  <Route path='/customer-dashboard' element={<CustomerDashboard/>}></Route>
+  <Route path='/carowner-dashboard' element={<CarOwnerDashBoard/>}></Route> 
  </Routes>
     </>
   )

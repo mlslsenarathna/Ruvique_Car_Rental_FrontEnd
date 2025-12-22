@@ -1,28 +1,59 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import './LoginPage.css';
 import logo from '../images/Logo2.jpg';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; 
 
+const LoginPage = () => {
+    const navigate = useNavigate(); 
 
-function LoginPage() {
+    // 1. Missing state must be defined
+    const [loginData, setLoginData] = useState({
+        nic: '',
+        password: ''
+    });
 
+    // 2. Missing handleChange must be defined
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        if (!name) return; 
+        setLoginData(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
 
-    
+    const signIn = (e) => {
+        e.preventDefault();
+        console.log("Submitting Data:", loginData);
+        
+        axios.post('http://localhost:8888/authentication/checkPassword', loginData)
+        .then(res => {
+           console
+            const userRole = res.data.role; 
+        
+
+            if (userRole === "Customer") {
+                navigate('/customer-dashboard'); 
+            } else if (userRole === "Car_Owner") {
+                navigate('/carowner-dashboard'); 
+            } else {
+                alert("Please check Password and NIC" + userRole);
+            }
+        })
+        .catch(err => {
+            console.error("Login Error:", err);
+            alert("Invalid Credentials or Server Error");
+        });
+    };
+
     return (
         <div className="login-container">
-
-            <svg xmlns="http://www.w3.org/2000/svg" className="d-none">
-                <symbol id="check2" viewBox="0 0 16 16">
-                    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"></path>
-                </symbol>
-            </svg>
-
-
             <div className="bg-glow-effect"></div>
-
             <main className="form-signin-wrapper">
-                <form className="p-4 my-custom-form">
+                <form className="p-4 my-custom-form" onSubmit={signIn}>
                     <div className="text-center">
                         <img className="mb-4" src={logo} alt="Logo" width="180" height="180" />
                         <h1 className="h3 mb-3 text-white fw-bold">Welcome to Ruvique..!</h1>
@@ -30,16 +61,35 @@ function LoginPage() {
                     </div>
 
                     <div className="form-floating mb-2">
-                        <input type="nic" className="form-control" id="floatingInput" placeholder="name@example.com" />
+                        <input 
+                            type="text" 
+                            name="nic" 
+                            className="form-control" 
+                            value={loginData.nic}   
+                            onChange={handleChange} 
+                            required 
+                            id="floatingInput" 
+                            placeholder="NIC Number" 
+                        />
                         <label htmlFor="floatingInput">NIC Number</label>
                     </div>
+
                     <div className="form-floating mb-3">
-                        <input type="password" className="form-control" id="floatingPassword" placeholder="Password" />
+                        <input 
+                            type="password" 
+                            name="password" 
+                            className="form-control" 
+                            value={loginData.password}  
+                            onChange={handleChange} 
+                            required 
+                            id="floatingPassword" 
+                            placeholder="Password" 
+                        />
                         <label htmlFor="floatingPassword">Password</label>
                     </div>
 
                     <div className="form-check text-start my-3">
-                        <input className="form-check-input custom-checkbox" type="checkbox" value="remember-me" id="checkDefault" />
+                        <input className="form-check-input custom-checkbox" type="checkbox" id="checkDefault" />
                         <label className="form-check-label text-white" htmlFor="checkDefault">Remember me</label>
                         <label className="float-end">
                             <a href="#" className="text-white">Forgot password?</a>
@@ -47,8 +97,8 @@ function LoginPage() {
                     </div>
 
                     <button className="btn my-sign-btn w-100 py-2" type="submit">Sign in</button>
-                    <p className="mt-2 mb-2 text-white text-center">SG-Group PVT.LTD</p>
-                    <p className="mt-2 mb-3 text-white text-center">© 2025–2026</p>
+                    <p className="mt-4 mb-2 text-white text-center">SG-Group PVT.LTD</p>
+                    <p className="text-white text-center">© 2025–2026</p>
                 </form>
             </main>
         </div>
