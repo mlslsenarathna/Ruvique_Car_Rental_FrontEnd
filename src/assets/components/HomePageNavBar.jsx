@@ -4,6 +4,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import './HomePageNavbar.css';
 import NavLogo from '../images/LOGO_Horizontal_Copy.jpg';
 import { Button } from 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import { Link, Navigate } from 'react-router-dom';
 
 
 
@@ -31,7 +32,7 @@ function HomePageNavbar() {
             </svg>
 
             <header>
-                 <div className="px-3 py-2 bg-my-background border-bottom">
+                <div className="px-3 py-2 bg-my-background border-bottom">
                     <div className="container">
                         <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                             <a href="/" className="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
@@ -48,8 +49,9 @@ function HomePageNavbar() {
 
                             <ul className="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                                 <li>
-                                    <a href="#" className="nav-link text-my-color">
+                                    <a Link="/" className="nav-link text-my-color">
                                         <svg className="bi d-block mx-auto mb-1" width="24" height="24"><use xlinkHref="#home"></use></svg>
+
                                         Home
                                     </a>
                                 </li>
@@ -78,16 +80,20 @@ function HomePageNavbar() {
                                     </a>
                                 </li>
                                 <li>
-                                    <button className="login_box" type="button" data-bs-toggle="modal" data-bs-target="#loginModal">
+                                     <Link to="/login" className="custom-link">
+                                     <button className="login_box" type="button" data-bs-toggle="modal" data-bs-target="#loginModal">
                                         Log In
                                     </button>
+                                     </Link>
+                                    
 
                                 </li>
                                 <li>
-                                    <button className="signup_box" type="button" data-bs-toggle="modal" data-bs-target="#loginModal">
-                                        Sign Up
-                                    </button>
-
+                                    <Link to="/signup" className="custom-link">
+                                        <button className="signup_box" type="button">
+                                            SignUp
+                                        </button>
+                                    </Link>
                                 </li>
                             </ul>
                         </div>

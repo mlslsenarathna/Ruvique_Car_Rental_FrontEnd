@@ -3,22 +3,33 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import LoginPage from './assets/pages/LoginPage'
+import SignUpPage from './assets/pages/SignUpPage'
 import CustomerDashboard from './assets/pages/CustomerDashBoard'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import HomePage from './assets/pages/HomePage'
+import {BrowserRouter as Router,Route,Routes} from 'react-router-dom'
+
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-    <HomePage />
+    
+     
+     <Routes>
+  <Route path='' element={ <HomePage/>}></Route>
+  <Route path='/signup' element={<SignUpPage/>}></Route>
+  <Route path='/login' element={<LoginPage/>}></Route>
+ </Routes>
     </>
   )
 }
 
-export default App
+export default App;
+
+
 // <AuthProvider>
     //   <BrowserRouter>
     //     <Routes>

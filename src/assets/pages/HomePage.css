@@ -1,11 +1,21 @@
+/* Custom primary color for highlights */
+:root {
+    --my-color: #c59d5f; /* Gold accent */
+    --text-dark: #343a40; /* For text that needs to contrast with gold */
+}
+
+.text-my-color {
+    color: var(--my-color) !important;
+}
 
 .tracking-widest {
     letter-spacing: 4px;
 }
 
+/* Gold Button Styling */
 .btn-gold {
-    background-color: #c59d5f;
-    color: #000;
+    background-color: var(--my-color);
+    color: var(--text-dark); /* Ensure text is dark for readability on gold */
     font-weight: bold;
     border: none;
     border-radius: 4px;
@@ -13,12 +23,46 @@
 }
 
 .btn-gold:hover {
-    background-color: #ca9654 ;
+    background-color: #ca9654; /* Slightly darker gold on hover */
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(197, 157, 95, 0.4);
 }
 
-
 .bg-gold {
-    background-color: #c59d5f;
+    background-color: var(--my-color) !important;
+}
+
+/* Hero Section Specific Styles */
+.hero-section {
+    background: linear-gradient(135deg, #1a1a1a, #333333); /* Dark gradient for hero */
+    color: white;
+    padding: 80px 0;
+}
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 40px 0;
+    }
+}
+
+/* Search Section Specific Styles */
+.search-section {
+    background-color: #f8f9fa; /* Light background for search */
+}
+
+.search-box {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 900px; /* Constrain width of search box */
+    margin: 0 auto;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    background-color: var(--my-color) !important;
+    color: var(--text-dark) !important;
+}
+
+.form-check-input:checked {
+    background-color: var(--my-color);
+    border-color: var(--my-color);
 }
