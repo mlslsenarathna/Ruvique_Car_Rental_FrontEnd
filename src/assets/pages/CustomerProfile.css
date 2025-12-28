@@ -1,0 +1,157 @@
+:root {
+    --deep-black: #050505;
+    --card-dark: #121212;
+    --gold: #ca9654;
+    --gold-dim: #d4af37;
+    
+    --text-main: #ffffff;
+    --text-muted: #888888;
+}
+
+.luxury-dashboard {
+    background: var(--deep-black);
+    min-height: 100vh;
+    color: var(--text-main);
+    padding-bottom: 50px;
+}
+
+.dashboard-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* --- HEADER --- */
+.dashboard-header {
+    background: var(--card-dark);
+    border: 1px solid #222;
+    padding: 30px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.user-brand { display: flex; align-items: center; gap: 20px; }
+
+.avatar-container { position: relative; }
+.main-avatar {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    border: 2px solid var(--gold);
+}
+
+.status-ring {
+    position: absolute; top: -5px; left: -5px; width: 90px; height: 90px;
+    border: 2px solid var(--gold); border-radius: 50%;
+    border-top-color: transparent; animation: spin 4s linear infinite;
+}
+
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+.membership-tier {
+    color: var(--gold); font-size: 0.7rem; font-weight: 900;
+    letter-spacing: 3px; border: 1px solid var(--gold);
+    padding: 3px 10px; border-radius: 50px;
+}
+
+.header-stats { display: flex; gap: 40px; }
+.stat-pill label { display: block; font-size: 0.7rem; color: var(--text-muted); }
+.stat-pill span { font-size: 1.2rem; font-weight: 700; }
+
+/* --- LAYOUT GRID --- */
+.main-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 30px;
+}
+
+/* --- SIDE NAV --- */
+.side-nav {
+    background: var(--card-dark);
+    padding: 20px;
+    border-radius: 20px;
+    height: fit-content;
+}
+
+.nav-link {
+    width: 100%; text-align: left; background: transparent; border: none;
+    color: var(--text-muted); padding: 15px; border-radius: 12px;
+    margin-bottom: 10px; transition: 0.3s;
+}
+
+.nav-link.active { background: var(--gold); color: black; font-weight: 700; }
+.nav-link:hover:not(.active) { background: #222; color: white; }
+
+/* --- DOCUMENT SLOTS --- */
+.document-slots { display: flex; flex-direction: column; gap: 15px; margin-top: 20px; }
+.slot {
+    display: flex; align-items: center; gap: 20px; padding: 20px;
+    background: #181818; border-radius: 15px; border: 1px solid #222;
+}
+
+.slot.verified { border-left: 5px solid #00ff88; }
+.slot.pending { border-left: 5px solid #f9d976; }
+.slot.empty { border-left: 5px solid #ff4d4d; }
+
+.slot-icon { font-size: 1.5rem; }
+.slot-info label { display: block; font-weight: 700; }
+.slot-info span { font-size: 0.8rem; color: var(--text-muted); }
+
+.slot-action {
+    margin-left: auto; background: #333; border: none; color: white;
+    padding: 8px 15px; border-radius: 8px; font-size: 0.8rem;
+}
+
+.slot-action.upload { background: var(--gold); color: black; font-weight: 700; }
+
+/* --- COMPLEX FORM --- */
+.complex-form { margin-top: 20px; }
+.input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+.field label { display: block; color: var(--text-muted); font-size: 0.8rem; margin-bottom: 8px; }
+.field input {
+    width: 100%; background: #000; border: 1px solid #333; padding: 12px;
+    border-radius: 10px; color: white;
+}
+
+.input-with-badge { position: relative; }
+.badge-verified { position: absolute; right: 10px; top: 10px; color: #00ff88; font-size: 0.7rem; }
+.badge-unverified { position: absolute; right: 10px; top: 10px; color: #ff4d4d; font-size: 0.7rem; cursor: pointer; }
+
+.save-btn {
+    background: transparent; border: 1px solid var(--gold); color: var(--gold);
+    padding: 15px 30px; border-radius: 10px; font-weight: 700; width: 100%;
+    transition: 0.3s;
+}
+
+.save-btn:hover { background: var(--gold); color: black; }
+/* --- RATING STYLES --- */
+.user-rating-stars {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: 10px;
+}
+
+.gold-star {
+    color: var(--gold);
+    font-size: 0.9rem;
+    filter: drop-shadow(0 0 5px var(--gold-glow));
+}
+
+.rating-count {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-left: 5px;
+    font-weight: 600;
+}
+
+/* Ensure the header text and stars align nicely */
+.user-meta h1 {
+    margin-bottom: 5px !important;
+}
+
+.gap-2 {
+    gap: 0.5rem !important;
+}

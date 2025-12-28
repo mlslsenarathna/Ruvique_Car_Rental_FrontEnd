@@ -69,7 +69,7 @@ function CustomerNavbar() {
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" className="nav-link text-my-color">
+                                    <a href="/customer-profile" className="nav-link text-my-color">
                                         <svg className="bi d-block mx-auto mb-1" width="24" height="24"><use xlinkHref="#people-circle"></use></svg>
                                        Profile
                                     </a>

@@ -1,8 +1,13 @@
+import CarOwnerNavbar from "../components/CarOwnerNavbar"
+import CustomerNavbar from "../components/CustomerNavbar";
+import React from "react";
+import './CarOwnerDashBoard.css';
+
 function CarOwnerDashBoard() {
     return (
-        <div>
-            <h1>Car Owner Dashboard</h1>
-        </div>
+      <>
+         <CarOwnerNavbar/>
+      </>
     );
 }   
 export default CarOwnerDashBoard;

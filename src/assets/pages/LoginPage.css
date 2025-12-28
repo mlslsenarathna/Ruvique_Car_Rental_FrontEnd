@@ -3,7 +3,7 @@ html, body {
     padding: 0 !important;
     width: 100% !important;
     height: 100% !important;
-    background-color: #000;
+    background-color: #000000;
 }
 
 .login-container {
@@ -13,7 +13,7 @@ html, body {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    background-color: #000;
+    background-color: #000000;
     overflow: hidden;
 }
 
@@ -40,7 +40,7 @@ html, body {
 }
 
 .my-custom-form {
-    background-color: rgba(0, 0, 0, 0.85);
+    background-color: #000000;
     border: 1px solid #ca9654 !important;
     border-radius: 12px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);

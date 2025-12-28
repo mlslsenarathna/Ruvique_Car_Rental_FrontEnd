@@ -11,6 +11,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import HomePage from './assets/pages/HomePage'
 import VehiclePage from './assets/pages/VehiclesPage'
 import {BrowserRouter as Router,Route,Routes} from 'react-router-dom'
+import CustomerProfile from './assets/pages/CustomerProfile'
 
 
 function App() {
@@ -27,7 +28,8 @@ function App() {
   <Route path='/customer-dashboard' element={<CustomerDashboard/>}></Route>
   <Route path='/customer-dashboard/vehicles' element={<VehiclePage/>}></Route>
   <Route path='/carowner-dashboard' element={<CarOwnerDashBoard/>}></Route> 
- </Routes>
+  <Route path='/customer-profile' element={<CustomerProfile/>}></Route>
+   </Routes>
     </>
   )
 }
