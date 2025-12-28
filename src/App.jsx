@@ -9,6 +9,7 @@ import CarOwnerDashBoard from './assets/pages/CarOwnerDashBoard'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import HomePage from './assets/pages/HomePage'
+import VehiclePage from './assets/pages/VehiclesPage'
 import {BrowserRouter as Router,Route,Routes} from 'react-router-dom'
 
 
@@ -24,6 +25,7 @@ function App() {
   <Route path='/signup' element={<SignUpPage/>}></Route>
   <Route path='/login' element={<LoginPage/>}></Route>
   <Route path='/customer-dashboard' element={<CustomerDashboard/>}></Route>
+  <Route path='/customer-dashboard/vehicles' element={<VehiclePage/>}></Route>
   <Route path='/carowner-dashboard' element={<CarOwnerDashBoard/>}></Route> 
  </Routes>
     </>

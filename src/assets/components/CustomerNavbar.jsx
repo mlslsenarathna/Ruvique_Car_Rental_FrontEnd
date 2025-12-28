@@ -45,7 +45,7 @@ function CustomerNavbar() {
 
                             <ul className="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                                 <li>
-                                    <a href="#" className="nav-link text-my-color">
+                                    <a href="/customer-dashboard" className="nav-link text-my-color">
                                         <svg className="bi d-block mx-auto mb-1" width="24" height="24"><use xlinkHref="#home"></use></svg>
                                         Home
                                     </a>
@@ -63,7 +63,7 @@ function CustomerNavbar() {
                                     </a>
                                 </li> */}
                                 <li>
-                                    <a href="#" className="nav-link text-my-color">
+                                    <a href="/customer-dashboard/vehicles" className="nav-link text-my-color">
                                         <svg className="bi d-block mx-auto mb-1" width="24" height="24"><use xlinkHref="#grid"></use></svg>
                                         Vehicles
                                     </a>
@@ -71,7 +71,7 @@ function CustomerNavbar() {
                                 <li>
                                     <a href="#" className="nav-link text-my-color">
                                         <svg className="bi d-block mx-auto mb-1" width="24" height="24"><use xlinkHref="#people-circle"></use></svg>
-                                        Customers
+                                       Profile
                                     </a>
                                 </li>
                             </ul>

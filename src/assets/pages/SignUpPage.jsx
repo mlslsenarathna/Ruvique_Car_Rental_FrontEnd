@@ -226,7 +226,7 @@ const SignUpPage = () => {
                         />
                     </div>
 
-                    <button type="submit" className="my-sign-btn">REGISTER NOW</button>
+                    <button type="submit" className="my-sign-btn" >REGISTER NOW</button>
                 </form>
             </div>
         </div>

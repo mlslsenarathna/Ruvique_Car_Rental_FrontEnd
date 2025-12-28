@@ -38,9 +38,9 @@ loader.load('path/to/wagon_r.glb', (gltf) => {
 const controls = new OrbitControls(camera, renderer.domElement);
 
 // 5. Animation Loop
-function animate() {
-    requestAnimationFrame(animate);
+function Animate() {
+    requestAnimationFrame(Animate);
     controls.update();
     renderer.render(scene, camera);
 }
-animate();
+Animate();
