@@ -29,6 +29,22 @@ function CarOwnerProfile() {
                 });
         }
     }, [nic]);
+    const renderStars = (rating) => {
+        const stars = [];
+        for (let i = 1; i <= 5; i++) {
+            if (i <= Math.floor(rating)) {
+              
+                stars.push(<i key={i} className="bi bi-star-fill gold-star"></i>);
+            } else if (i === Math.ceil(rating) && rating % 1 !== 0) {
+    
+                stars.push(<i key={i} className="bi bi-star-half gold-star"></i>);
+            } else {
+    
+                stars.push(<i key={i} className="bi bi-star gold-star"></i>);
+            }
+        }
+        return stars;
+    };
 
 
     return (
@@ -38,29 +54,27 @@ function CarOwnerProfile() {
             <div className="dashboard-container">
                 <header className="dashboard-header">
                     <div className="user-brand">
+
                         <div className="avatar-container">
                             <img src={dp} alt="Profile" className="main-avatar" />
                             <div className="status-ring"></div>
                         </div>
                         <div className="user-meta">
-                            <h1>{ownerData?.name}</h1>
+                            <h1>{ownerData?.name} </h1>
+
                             <div className="d-flex align-items-center gap-2">
                                 <span className="membership-tier">GOLD PRIVILEGE</span>
-                                {/* --- STAR RATING ADDED HERE --- */}
                                 <div className="user-rating-stars">
-                                    <i className="bi bi-star-fill gold-star"></i>
-                                    <i className="bi bi-star-fill gold-star"></i>
-                                    <i className="bi bi-star-fill gold-star"></i>
-                                    <i className="bi bi-star-fill gold-star"></i>
-                                    <i className="bi bi-star-fill gold-star"></i>
-                                    <span className="rating-count">(4.9)</span>
+                                    {renderStars(ownerData?.rating || 0)}
+                                    <span className="rating-count">({ownerData?.rating})</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div className="header-stats">
-                        {/* --- RATING PILL ADDED TO STATS --- */}
+                        
+
                         <div className="stat-pill">
                             <label>Driver Quality</label>
                             <span className="gold-text">Excellent</span>

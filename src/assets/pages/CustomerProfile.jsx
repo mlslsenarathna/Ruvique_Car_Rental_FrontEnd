@@ -7,11 +7,27 @@ import CustomerPay from '../components/customerComponents/CustomerPay';
 import CustomerSettings from '../components/customerComponents/CustomerSettings';
 import CustomerSupport from '../components/customerComponents/CustomerSupport';
 import CustomerLogOut from '../components/customerComponents/CustomerLogOut';
+import axios from 'axios';
 
 function CustomerProfile() {
     const [activeTab, setActiveTab] = useState('identity');
     const [verificationLevel, setVerificationLevel] = useState(65);
-
+    const [customerData, setCustomerData] = useState(null);
+        const nic = sessionStorage.getItem("customerNIC");
+        useEffect(() => {
+        if (!nic) {
+            window.location.href = "/login";
+        } else {
+            axios.get(`http://localhost:8888/customer/getCustomerByNic/${nic}`)
+                .then(res => {
+                    console.log("Customer Data:", res.data);
+                    setCustomerData(res.data);
+                })
+                .catch(err => {
+                    console.error("Error fetching owner data:", err);
+                });
+        }
+    }, [nic]);
     return (
         <div className="luxury-dashboard">
             <CustomerNavbar />
@@ -24,7 +40,7 @@ function CustomerProfile() {
                             <div className="status-ring"></div>
                         </div>
                         <div className="user-meta">
-                            <h1>Amantha Perera</h1>
+                           <h1>{customerData?.name}</h1>
                             <div className="d-flex align-items-center gap-2">
                                 <span className="membership-tier">GOLD PRIVILEGE</span>
                                 {/* --- STAR RATING ADDED HERE --- */}

@@ -1,16 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './CarCard.css';
+import { useNavigate } from 'react-router-dom';
 
 function CarCard() {
   const [cars, setCars] = useState([]);
+  const navigate = useNavigate();
+  const bookNow = (carId) => {
+    sessionStorage.setItem("selectedCarId", carId);
+    navigate(`/customer-dashboard/book_order`);
 
-const getImageUrl = (imageFileName) => {
-  if (!imageFileName) {
-    return "https://via.placeholder.com/300";
-  }
-  return `/vehicles/${imageFileName}`;
-};
+  };
+
+  const getImageUrl = (imageFileName) => {
+    if (!imageFileName) {
+      return "https://via.placeholder.com/300";
+    }
+    return `/vehicles/${imageFileName}`;
+  };
   useEffect(() => {
     axios.get("http://localhost:8888/car/getAllCars")
       .then(res => {
@@ -29,7 +36,7 @@ const getImageUrl = (imageFileName) => {
             <div className="creative-card">
               <div className="card-image-wrapper">
                 <img
-                
+
                   src={getImageUrl(car.imageurl)}
                   alt={`${car.brand} ${car.model}`}
                 />
@@ -66,7 +73,11 @@ const getImageUrl = (imageFileName) => {
                     <span className="price">{car.dailyRate}</span>
                     <span className="per-day">.00</span>
                   </div>
-                  <button className="action-btn">Book Now</button>
+                  <button className="action-btn" onClick={() => { bookNow(car.carId) }}>Book Now</button>
+
+
+
+
                 </div>
               </div>
             </div>

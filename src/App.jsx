@@ -13,6 +13,7 @@ import VehiclePage from './assets/pages/VehiclesPage'
 import {BrowserRouter as Router,Route,Routes} from 'react-router-dom'
 import CustomerProfile from './assets/pages/CustomerProfile'
 import CarOwnerProfile from './assets/pages/CarOwnerProfile'
+import CustomerOrder from './assets/pages/CustomerOrder'
 import CarOwnerProducts from './assets/pages/CarOwnerProducts'
 
 
@@ -33,6 +34,7 @@ function App() {
   <Route path='/customer-profile' element={<CustomerProfile/>}></Route>
   <Route path='/carowner-profile' element={<CarOwnerProfile/>}></Route>
   <Route path='/carowner-dashboard/vehicles' element={<CarOwnerProducts/>}></Route>
+  <Route path='/customer-dashboard/book_order' element={<CustomerOrder/>}></Route>
    </Routes>
     </>
   )

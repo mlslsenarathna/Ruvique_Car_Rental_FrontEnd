@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import './CarOwnerCard.css';
 const myFleet = [
     { id: 1, name: "Toyota Axio", plate: "WP CAS-1029", status: "On Rent", earnings: "145,000", image: "/vehicles/ToyotaAxio.jpg", utilization: 85 },
@@ -6,37 +7,67 @@ const myFleet = [
     { id: 3, name: "Toyota Camry", plate: "WP CAD-2233", status: "Maintenance", earnings: "95,000", image: "/vehicles/ToyotaCamry.jpg", utilization: 60 },
 ];
 function CarOwnerCard() {
-  return (
-   <>
-     <div className="fleet-grid">
-                    {myFleet.map(car => (
-                        <div className="fleet-card" key={car.id}>
-                            <div className="car-status-badge" data-status={car.status}>{car.status}</div>
-                            <div className="fleet-img-container">
-                                <img src={car.image} alt={car.name} />
+    const [products, setProducts] = useState([]);
+    const nic = sessionStorage.getItem("ownerNIC");
+
+    useEffect(() => {
+        axios.get(`http://localhost:8888/car/getCarsByOwner/${nic}`)
+            .then(response => {
+                setProducts(response.data);
+            }
+            )
+    }, []);
+
+    return (
+        <>
+            <div className="fleet-grid">
+                {products.map((car) => (
+                    <div className="fleet-card" key={car.carId}>
+                       
+                        <div className="car-status-badge" data-status={car.availability}>
+                            {car.availability}
+                        </div>
+
+                        <div className="fleet-img-container">
+                            {/* Using the imageUrl from your database */}
+                            <img src={`/vehicles/${car.imageUrl}`} alt={`${car.brand} ${car.model}`} />
+                        </div>
+
+                        <div className="fleet-info">
+                            {/* Concatenating Brand and Model */}
+                            <h4>{car.brand} {car.model} ({car.year})</h4>
+                            <span className="plate-no">{car.category} • {car.transmission}</span>
+
+                            <div className="performance-metrics">
+                                <div className="m-item">
+                                    <label>Daily Rate</label>
+                                    <span className="gold-text">LKR {car.dailyRate.toLocaleString()}</span>
+                                </div>
+                                <div className="m-item">
+                                    <label>Specs</label>
+                                    <span className="text-white" style={{ fontSize: '12px' }}>
+                                        {car.fuelType} • {car.seats} Seats
+                                    </span>
+                                </div>
                             </div>
-                            <div className="fleet-info">
-                                <h4>{car.name}</h4>
-                                <span className="plate-no">{car.plate}</span>
-                                <div className="performance-metrics">
-                                    <div className="m-item">
-                                        <label>Monthly Earnings</label>
-                                        <span className="gold-text">Rs. {car.earnings}</span>
-                                    </div>
-                                    <div className="m-item">
-                                        <label>Utilization</label>
-                                        <div className="small-bar"><div className="bar-fill" style={{width: `${car.utilization}%`}}></div></div>
-                                    </div>
+
+                            {/* Progress bar using mileage or a fixed utilization value */}
+                            <div className="m-item mt-2">
+                                <label>Fuel Efficiency</label>
+                                <div className="small-bar">
+                                    <div className="bar-fill" style={{ width: `${(car.mileage / 20) * 100}%` }}></div>
                                 </div>
-                                <div className="fleet-actions">
-                                    <button className="action-btn-main">Track</button>
-                                    <button className="action-btn-sub">Reports</button>
-                                </div>
+                            </div>
+
+                            <div className="fleet-actions">
+                                <button className="action-btn-main">Track</button>
+                                <button className="action-btn-sub">Manage</button>
                             </div>
                         </div>
-                    ))}
-                </div>
-   </>
-  );
+                    </div>
+                ))}
+            </div>
+        </>
+    );
 }
 export default CarOwnerCard;

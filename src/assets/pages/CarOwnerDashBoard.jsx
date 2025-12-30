@@ -3,7 +3,6 @@ import axios from "axios"; // Fixed: Added axios
 import CarOwnerNavbar from "../components/CarOwnerNavbar";
 import './CarOwnerDashBoard.css';
 
-// Sample Data for the Fleet
 
 
 function CarOwnerDashBoard() {
@@ -12,15 +11,15 @@ function CarOwnerDashBoard() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const nic = sessionStorage.getItem("ownerNIC"); 
+        const nic = sessionStorage.getItem("ownerNIC");
 
         if (!nic) {
-         
+
             window.location.href = "/login";
             return;
         }
 
-       
+
         axios.get(`http://localhost:8888/carOwner/getOwnerByNIC/${nic}`)
             .then(res => {
                 setOwnerData(res.data);
@@ -41,35 +40,35 @@ function CarOwnerDashBoard() {
                 <CarOwnerNavbar />
             </div>
             <div className="owner-dashboard-body fade-in">
-                {/* Greeting Section */}
                 <div className="mb-4">
-                    <h2 className="gold-text">Welcome back , <span className="text-my-color">{ownerData?.name || 'Owner'}</span> </h2>
+                    <h2 >Welcome back , mr. <span className="text-my-color">{ownerData?.name || 'Owner'}</span> </h2>
                     <p className="text-muted">NIC: {sessionStorage.getItem("userNic")}</p>
                 </div>
 
                 <div className="row g-4 mb-5">
+
                     <div className="col-md-3">
-                        <div className="business-card gradient-gold">
-                            <label>Total Revenue</label>
+                        <div className="business-card gradient-dark-gold">
+                            <label>Last Week</label>
                             <h2>LKR 520,500</h2>
                             <span className="trend-up">+12.5% this month</span>
                         </div>
                     </div>
-                     <div className="col-md-3">
-                        <div className="business-card gradient-dark-gold">
-                            <label>Total Revenue</label>
+                    <div className="col-md-3">
+                        <div className="business-card gradient-gold">
+                            <label className="">Last Order</label>
                             <h2>LKR 520,500</h2>
                             <span className="trend-up">+12.5% this month</span>
                         </div>
                     </div>
                     <div className="col-md-3">
                         <div className="business-card gradient-bronze-gold">
-                            <label>Total Revenue</label>
+                            <label>Last Month</label>
                             <h2>LKR 520,500</h2>
-                            <span className="trend-up">+12.5% this month</span>
+                            <span className="trend-up">12.5% this month</span>
                         </div>
                     </div>
-                     <div className="col-md-3">
+                    <div className="col-md-3">
                         <div className="business-card gradient-metallic-gold">
                             <label>Total Revenue</label>
                             <h2>LKR 520,500</h2>
@@ -82,8 +81,11 @@ function CarOwnerDashBoard() {
                     <h3 className="gold-text">Fleet Performance</h3>
                     <button className="add-vehicle-btn">+ List New Vehicle</button>
                 </div>
+                <div className="section-header d-flex justify-content-between align-items-center mb-4">
+                    <h2 className=""> Events </h2>
+                </div>
 
-              
+
             </div>
         </>
     );

@@ -4,21 +4,21 @@
     --gold: #ca9654;
     --gold-dim: #d4af37;
     --text-muted: #888888;
-    --my-color: #c59d5f; 
     --text-dark: #343a40; 
+    --text-my-color:  #c59d5f;
 }
 
-.text-my-color {
-    color: var(--my-color) !important;
-}
+
+
+
 
 .owner-dashboard-body {
     padding: 20px;
     background: var(--deep-black);
-    color: white;
+    color: rgb(246, 246, 246);
 }
 
-/* Business Cards (Top Metrics) */
+
 .business-card {
     background: var(--card-dark);
     padding: 25px;
@@ -27,10 +27,16 @@
     position: relative;
     overflow: hidden;
 }
+.business-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(202, 150, 84, 0.3);
+}
 
 .business-card label {
-    font-size: 0.8rem;
-    color: var(--text-muted);
+    font-size: 1.2rem;
+    font-style: bold;
+ 
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -39,19 +45,19 @@
 
 .gradient-gold {
     background: linear-gradient(135deg, #ca9654 0%, #33230a 100%);
-    color: black;
+   
 }
 .gradient-dark-gold {
     background: linear-gradient(135deg, #b8860b 0%, #1a1405 100%);
-    color: white; /* Use white text for better contrast */
+  
 }
 .gradient-bronze-gold {
     background: linear-gradient(135deg, #946b2d 0%, #2b1b0a 100%);
-    color: #f1f1f1;
+  
 }
 .gradient-metallic-gold {
     background: linear-gradient(135deg, #8a6e2f 0%, #0d0d0d 100%);
-    color: #e6e6e6;
+
 }
 
 .gradient-gold label { color: rgba(0,0,0,0.6); }

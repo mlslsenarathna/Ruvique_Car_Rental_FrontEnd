@@ -1,0 +1,117 @@
+:root {
+    --gold: #ca9654;
+    --dark-bg: #050505;
+    --card-dark: #121212;
+}
+
+.luxury-vehicle-page {
+    background-color: var(--dark-bg);
+    min-height: 100vh;
+    color: white;
+}
+
+/* Horizontal Filter Bar Wrapper */
+.filter-wrapper {
+    width: 100%;
+    padding: 20px 0;
+    background: linear-gradient(to bottom, #000, transparent);
+    position: sticky;
+    top: 70px; /* Adjust based on your Navbar height */
+    z-index: 100;
+}
+
+.horizontal-filter-bar {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: rgba(20, 20, 20, 0.85);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(202, 150, 84, 0.2);
+    border-radius: 100px; /* Capsule shape */
+    display: flex;
+    align-items: center;
+    padding: 10px 30px;
+    gap: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.filter-item {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    border-right: 1px solid #333;
+    padding-right: 15px;
+}
+
+.filter-item:last-child, .action-item {
+    border-right: none;
+}
+
+.filter-item label {
+    font-size: 0.65rem;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.filter-item select, .filter-item input {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 0.9rem;
+    outline: none;
+    cursor: pointer;
+}
+
+.filter-item select option {
+    background: #1a1a1a;
+    color: white;
+}
+
+/* Action Button */
+.gold-search-btn {
+    background: var(--gold);
+    color: black;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.gold-search-btn:hover {
+    background: #e5ab61;
+    box-shadow: 0 0 15px rgba(202, 150, 84, 0.4);
+}
+
+/* Grid Container */
+.page-container {
+    max-width: 1250px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.grid-header {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #222;
+    padding-bottom: 15px;
+}
+
+.car-results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.gold-text {
+    color: var(--gold);
+}
+
+.results-count {
+    color: #666;
+    font-size: 0.85rem;
+}
