@@ -1,0 +1,36 @@
+/* Container for alignment */
+.user-rating-stars {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    margin-left: 10px;
+    background: rgba(255, 255, 255, 0.05); /* Slight background to make it pop */
+    padding: 2px 8px;
+    border-radius: 20px;
+}
+
+/* The Stars */
+.gold-star {
+    color: #d4af37 !important; /* Metallic Gold */
+    font-size: 14px;
+    text-shadow: 0 0 8px rgba(212, 175, 55, 0.5); /* Glow effect */
+}
+
+/* The (4.9) text */
+.rating-count {
+    color: #e6e6e6;
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+/* Ensure Membership Tier and Stars are side-by-side */
+.membership-tier {
+    background: linear-gradient(90deg, #b8860b, #5d4405);
+    color: white;
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-size: 10px;
+    letter-spacing: 1px;
+    font-weight: bold;
+}

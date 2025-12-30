@@ -4,10 +4,10 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import './LoginPage.css';
 import logo from '../images/Logo2.jpg';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
 
     // 1. Missing state must be defined
     const [loginData, setLoginData] = useState({
@@ -18,7 +18,7 @@ const LoginPage = () => {
     // 2. Missing handleChange must be defined
     const handleChange = (e) => {
         const { name, value } = e.target;
-        if (!name) return; 
+        if (!name) return;
         setLoginData(prev => ({
             ...prev,
             [name]: value
@@ -28,25 +28,26 @@ const LoginPage = () => {
     const signIn = (e) => {
         e.preventDefault();
         console.log("Submitting Data:", loginData);
-        
-        axios.post('http://localhost:8888/authentication/checkPassword', loginData)
-        .then(res => {
-           console
-            const userRole = res.data.role; 
-        
 
-            if (userRole === "Customer") {
-                navigate('/customer-dashboard'); 
-            } else if (userRole === "Car_Owner") {
-                navigate('/carowner-dashboard'); 
-            } else {
-                alert("Please check Password and NIC" + userRole);
-            }
-        })
-        .catch(err => {
-            console.error("Login Error:", err);
-            alert("Invalid Credentials or Server Error");
-        });
+        axios.post('http://localhost:8888/authentication/checkPassword', loginData)
+            .then(res => {
+                const userRole = res.data.role;
+
+
+                if (userRole === "Customer") {
+                    sessionStorage.setItem("customerNIC", res.data.nic);
+                    navigate('/customer-dashboard');
+                } else if (userRole === "Car_Owner") {
+                    sessionStorage.setItem("ownerNIC", res.data.nic);
+                    navigate('/carowner-dashboard');
+                } else {
+                    alert("Please check Password and NIC" + userRole);
+                }
+            })
+            .catch(err => {
+                console.error("Login Error:", err);
+                alert("Invalid Credentials or Server Error");
+            });
     };
 
     return (
@@ -61,29 +62,29 @@ const LoginPage = () => {
                     </div>
 
                     <div className="form-floating mb-2">
-                        <input 
-                            type="text" 
-                            name="nic" 
-                            className="form-control" 
-                            value={loginData.nic}   
-                            onChange={handleChange} 
-                            required 
-                            id="floatingInput" 
-                            placeholder="NIC Number" 
+                        <input
+                            type="text"
+                            name="nic"
+                            className="form-control"
+                            value={loginData.nic}
+                            onChange={handleChange}
+                            required
+                            id="floatingInput"
+                            placeholder="NIC Number"
                         />
                         <label htmlFor="floatingInput">NIC Number</label>
                     </div>
 
                     <div className="form-floating mb-3">
-                        <input 
-                            type="password" 
-                            name="password" 
-                            className="form-control" 
-                            value={loginData.password}  
-                            onChange={handleChange} 
-                            required 
-                            id="floatingPassword" 
-                            placeholder="Password" 
+                        <input
+                            type="password"
+                            name="password"
+                            className="form-control"
+                            value={loginData.password}
+                            onChange={handleChange}
+                            required
+                            id="floatingPassword"
+                            placeholder="Password"
                         />
                         <label htmlFor="floatingPassword">Password</label>
                     </div>
